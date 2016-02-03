@@ -5,8 +5,14 @@
 
 // Global variables.
 var dieUniqueId = 0;
-var highlightStates = ["BlankHighlight.png", "OHighlight.png", "XHighlight.png"];
-var diceImages = {0:"token.png", 4:"d4.png", 6:"d6.png", 8:"d8.png", 10:"d10.png"};
+var highlightStates = ["https://raw.githubusercontent.com/DanMaruschak/DiceInTheVineyard/master/BlankHighlight.png",
+                       "https://raw.githubusercontent.com/DanMaruschak/DiceInTheVineyard/master/OHighlight.png",
+                       "https://raw.githubusercontent.com/DanMaruschak/DiceInTheVineyard/master/XHighlight.png"];
+var diceImages = {0:"https://raw.githubusercontent.com/DanMaruschak/DiceInTheVineyard/master/token.png",
+                    4:"https://raw.githubusercontent.com/DanMaruschak/DiceInTheVineyard/master/d4.png",
+                    6:"https://raw.githubusercontent.com/DanMaruschak/DiceInTheVineyard/master/d6.png",
+                    8:"https://raw.githubusercontent.com/DanMaruschak/DiceInTheVineyard/master/d8.png",
+                    10:"https://raw.githubusercontent.com/DanMaruschak/DiceInTheVineyard/master/d10.png"};
 
 
 // incrementor/decrementor on the input field for how many of each dice to roll.

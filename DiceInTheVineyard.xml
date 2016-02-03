@@ -11,8 +11,8 @@
 <head>
     <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="diceInTheVineyard.css"/>
-    <script src="diceInTheVineyard.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/DanMaruschak/DiceInTheVineyard/master/diceInTheVineyard.css"/>
+    <script src="https://raw.githubusercontent.com/DanMaruschak/DiceInTheVineyard/master/diceInTheVineyard.js"></script>
 </head>
 
 
@@ -36,7 +36,7 @@ gadgets.util.registerOnLoadHandler(init);
 </script>
 	
     <div id="diceinputcontainer">
-        <div id="d4" class="dieinput" style="background-image: url('d4.png'); left: 0px;">
+        <div id="d4" class="dieinput" style="background-image: url('https://raw.githubusercontent.com/DanMaruschak/DiceInTheVineyard/master/d4.png'); left: 0px;">
             <div class="incrdecr">
                 <input class="incrbutton" type="button" onclick="dRequestChange('d4request', 1)" value="&#x25B2;"/>
                 <input class="decrbutton" type="button" onclick="dRequestChange('d4request', -1)" value="&#x25BC;"/>
@@ -44,7 +44,7 @@ gadgets.util.registerOnLoadHandler(init);
             <input id="d4request" class="dnumdie" type="text" size=1 maxlength=1 value="0"/>
             <div class="diesizeindicator">d4</div>
         </div>
-        <div id="d6" class="dieinput" style="background-image: url('d6.png'); left: 72px;">
+        <div id="d6" class="dieinput" style="background-image: url('https://raw.githubusercontent.com/DanMaruschak/DiceInTheVineyard/master/d6.png'); left: 72px;">
             <div class="incrdecr">
                 <input class="incrbutton" type="button" onclick="dRequestChange('d6request', 1)" value="&#x25B2;"/>
                 <input class="decrbutton" type="button" onclick="dRequestChange('d6request', -1)" value="&#x25BC;"/>
@@ -52,7 +52,7 @@ gadgets.util.registerOnLoadHandler(init);
             <input id="d6request" class="dnumdie" type="text" size=1 maxlength=1 value="0"/>
             <div class="diesizeindicator">d6</div>
         </div>
-        <div id="d8" class="dieinput" style="background-image: url('d8.png'); left: 144px;">
+        <div id="d8" class="dieinput" style="background-image: url('https://raw.githubusercontent.com/DanMaruschak/DiceInTheVineyard/master/d8.png'); left: 144px;">
             <div class="incrdecr">
                 <input class="incrbutton" type="button" onclick="dRequestChange('d8request', 1)" value="&#x25B2;"/>
                 <input class="decrbutton" type="button" onclick="dRequestChange('d8request', -1)" value="&#x25BC;"/>
@@ -60,7 +60,7 @@ gadgets.util.registerOnLoadHandler(init);
             <input id="d8request" class="dnumdie" type="text" size=1 maxlength=1 value="0"/>
             <div class="diesizeindicator">d8</div>
         </div>
-        <div id="d10" class="dieinput" style="background-image: url('d10.png'); left: 216px;">
+        <div id="d10" class="dieinput" style="background-image: url('https://raw.githubusercontent.com/DanMaruschak/DiceInTheVineyard/master/d10.png'); left: 216px;">
             <div class="incrdecr">
                 <input class="incrbutton" type="button" onclick="dRequestChange('d10request', 1)" value="&#x25B2;"/>
                 <input class="decrbutton" type="button" onclick="dRequestChange('d10request', -1)" value="&#x25BC;"/>
