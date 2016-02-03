@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+	<ModulePrefs title="Dice in the Vineyard">
+		<Require feature="rpc" />
+		<Require feature="views" />
+	</ModulePrefs>
+	<Content type="html"><![CDATA[     
+
+<html>
+<style type="text/css">
+<!--
+.button {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ddd));
+  background: -moz-linear-gradient(top, #fff, #ddd);  
+  border: 1px solid #bbb;
+}
+
+.button:active {
+	background: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#333)); 
+	background: -moz-linear-gradient(bottom, #ddd, #aaa); }
+
+-->
+</style>
+
+<head>
+    <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
+    <!--<script src="https://www.danmaruschak.com/hangoutapps/test/diceStreamClone.js"></script>-->
+    <script src="https://www.googledrive.com/host/0B5Gmp-WiquQTMlFLUGl5UXNKZlU"></script>
+</head>
+
+
+<body>
+
+
+<h3>DiceStream Clone</h3>
+
+<p>
+<input class="button" type="button" value="Roll a d6!" id="rolldie" 
+    style="visibility:hidden;"
+    onClick="rolld6()"/>
+</p>
+
+<div id="dicePool"></div>
+
+<hr>
+
+<script>
+
+function init() {
+  // When API is ready...                                                         
+  gapi.hangout.onApiReady.add(
+      function(eventObj) {
+        if (eventObj.isApiReady) {
+          document.getElementById('rolldie')
+            .style.visibility = 'visible';
+        }
+      });
+}
+
+// Wait for gadget to load.                                                       
+gadgets.util.registerOnLoadHandler(init);
+</script>
+</body>
+]]>
+</Content>
+</Module>
+
