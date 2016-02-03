@@ -91,7 +91,7 @@ gadgets.util.registerOnLoadHandler(init);
         </div>
         <div class="extrafeature">
             <center>
-                <div id="token" style="background-image: url('token.png'); left: 0px;">
+                <div id="token" style="background-image: url('https://raw.githubusercontent.com/DanMaruschak/DiceInTheVineyard/master/token.png'); left: 0px;">
                     <input id="numberontoken" class="dnumdie" type="text" size=2 maxlength==2; value=""/>
                 </div>
                 <input id="tokenbutton" type="button" onclick="addTokenToPool()" value="Add token to pool"/>
