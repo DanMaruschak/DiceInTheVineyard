@@ -10,16 +10,12 @@
 
 <head>
     <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
-
-    <!-- this DiceInTheVineyard.xml file is at https://www.googledrive.com/host/0B5Gmp-WiquQTS2ZobXViYTItcDg -->
     
     <!-- DiceInTheVineyard.css -->
-    <link rel="stylesheet" type="text/css" href="{{ site.github.url }}/code/DiceInTheVineyard.css"/>
-    <!--<link rel="stylesheet" type="text/css" href="https://www.googledrive.com/host/0B5Gmp-WiquQTUlU2NHZJNXBwQm8"/>-->
+    <link rel="stylesheet" type="text/css" href="https://danmaruschak.github.io/DiceInTheVineyard/code/diceInTheVineyard.css"/>
 
     <!-- DiceInTheVineyard.js -->
-    <script src="{{ site.github.url }}/code/DiceInTheVineyard.js"></script>
-    <!--<script src="https://www.googledrive.com/host/0B5Gmp-WiquQTbVdHSmtjeDZKOG8"></script>-->
+    <script src="https://danmaruschak.github.io/DiceInTheVineyard/code/diceInTheVineyard.js"></script>
 </head>
 
 
