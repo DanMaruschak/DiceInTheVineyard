@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+	<ModulePrefs title="Dice in the Vineyard">
+		<Require feature="rpc" />
+		<Require feature="views" />
+	</ModulePrefs>
+	<Content type="html"><![CDATA[     
+
+<html>
+
+<head>
+    <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
+
+    <!-- this DiceInTheVineyard.xml file is at https://www.googledrive.com/host/0B5Gmp-WiquQTS2ZobXViYTItcDg -->
+    
+    <!-- DiceInTheVineyard.css -->
+    <link rel="stylesheet" type="text/css" href="{{ site.github.url }}/code/DiceInTheVineyard.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="https://www.googledrive.com/host/0B5Gmp-WiquQTUlU2NHZJNXBwQm8"/>-->
+
+    <!-- DiceInTheVineyard.js -->
+    <script src="{{ site.github.url }}/code/DiceInTheVineyard.js"></script>
+    <!--<script src="https://www.googledrive.com/host/0B5Gmp-WiquQTbVdHSmtjeDZKOG8"></script>-->
+</head>
+
+
+<body>
+
+<script>
+
+function init() {
+  // When API is ready...                                                         
+  gapi.hangout.onApiReady.add(
+      function(eventObj) {
+        if (eventObj.isApiReady) {
+          document.getElementById('gui')
+            .style.visibility = 'visible';
+	    
+	    initDieImages();
+        }
+      });
+}
+
+// Wait for gadget to load.                                                       
+gadgets.util.registerOnLoadHandler(init);
+</script>
+
+<div id="tabs" class="tabcontainer">
+	<div class="tabselector" onclick="clickOnTab(event)" data-controlleddiv="dice" style="padding-bottom: 2px;">Dice</div>
+        <div class="tabselector" onclick="clickOnTab(event)" data-controlleddiv="settings">Settings</div>
+	<div class="tabselector" onclick="clickOnTab(event)" data-controlleddiv="help">Help</div>
+</div>
+
+<div id="gui" class="tabdisplay">
+
+<div id="dice" class="tabbeddiv" style="display: block;">
+    <div id="diceinputcontainer">
+        <div id="d4" class="dieinput" data-dsize=4 data-renderfunction="drawDiePolygon([[0.02, 0.78691667], [0.491666667, 0.282333333], [0.963333333, 0.78691667], [0.4916666667, 0.0308333333]], [[0, 1, 2], [0, 1, 3], [3, 1, 2]])">
+	    <img class="dieimg" height=60 width=60/>
+            <div class="incrdecr">
+                <input class="incrbutton" type="button" onclick="dRequestChange('d4request', 1)" value="&#x25B2;"/>
+                <input class="decrbutton" type="button" onclick="dRequestChange('d4request', -1)" value="&#x25BC;"/>
+            </div>
+            <input id="d4request" class="dnumdie" type="text" size=1 maxlength=1 value="0"/>
+            <div class="diesizeindicator">d4</div>
+        </div>
+        <div id="d6" class="dieinput" data-dsize=6 data-renderfunction="drawDiePolygon([[0.1305, 0.835833333], [0.879666667, 0.835833333], [0.8355, 0.151833333], [0.166333333, 0.151833333], [0.764, 0.976833333], [0.2125, 0.976833333]], [[0, 1, 2, 3], [0, 1, 4, 5]])" data-dtextsize=0.5>
+	    <img class="dieimg" height=60 width=60/>
+            <div class="incrdecr">
+                <input class="incrbutton" type="button" onclick="dRequestChange('d6request', 1)" value="&#x25B2;"/>
+                <input class="decrbutton" type="button" onclick="dRequestChange('d6request', -1)" value="&#x25BC;"/>
+            </div>
+            <input id="d6request" class="dnumdie" type="text" size=1 maxlength=1 value="0"/>
+            <div class="diesizeindicator">d6</div>
+        </div>
+        <div id="d8" class="dieinput" data-dsize=8 data-renderfunction="drawDiePolygon([[0.131, 0.721666667], [0.485166667, 0.1355], [0.8675, 0.721666667], [0.211333333, 0.450833333], [0.7738333333, 0.4508333333], [0.473166667, 0.979166667]], [[0, 1, 2], [0, 1, 3], [1, 2, 4], [0, 2, 5]])">
+	    <img class="dieimg" height=60 width=60/>
+            <div class="incrdecr">
+                <input class="incrbutton" type="button" onclick="dRequestChange('d8request', 1)" value="&#x25B2;"/>
+                <input class="decrbutton" type="button" onclick="dRequestChange('d8request', -1)" value="&#x25BC;"/>
+            </div>
+            <input id="d8request" class="dnumdie" type="text" size=1 maxlength=1 value="0"/>
+            <div class="diesizeindicator">d8</div>
+        </div>
+        <div id="d10" class="dieinput" data-dsize=10 data-renderfunction="drawDiePolygon([[0.498333333, 0.852666667], [0.19933333, 0.6785], [0.498333333, 0.0685], [0.823, 0.675666667], [0.034166667, 0.642833333], [0.5, 0.953833333], [0.961333333, 0.641333333], [0.0996666667, 0.427], [0.9076666667, 0.422666667]], [[0, 1, 2, 3], [0, 1, 4, 5], [0, 3, 6, 5], [1, 4, 7, 2], [3, 2, 8, 6]])" data-dtextsize=0.35>
+	    <img class="dieimg" height=60 width=60/>
+            <div class="incrdecr">
+                <input class="incrbutton" type="button" onclick="dRequestChange('d10request', 1)" value="&#x25B2;"/>
+                <input class="decrbutton" type="button" onclick="dRequestChange('d10request', -1)" value="&#x25BC;"/>
+            </div>
+            <input id="d10request" class="dnumdie" type="text" size=1 maxlength=1 value="0"/>
+            <div class="diesizeindicator">d10</div>
+        </div>
+    </div>
+    <div class="rollcontrols">
+        <input class="rollbutton" type="button" onclick="sortPool()" value="Sort dice in pool"/>
+        <input class="rollbutton" type="button" onclick="rollDiceIntoPool()" value="Roll dice into pool"/>
+    </div>
+    
+    <div id="dicepool"></div>
+
+    <div class="rollcontrols">
+        <input class="rollbutton" type="button" onclick="clearPool()" value="Remove all dice"/>
+        <input class="rollbutton" type="button" onclick="removeXsFromPool()" value="Remove X dice"/>
+    </div>
+
+    <div id="poolextras">
+        <div class="extrafeature" style="height:84px;">
+            <center>
+                <div id="circlesum"><img id="circlesumimg" width=60 height=60/></div>
+                <input id="dicesumactive" type="checkbox" onchange="updateCircleSum()" checked=true/>
+                <div id="dicesumlabel"><img id="dicesumbkgrnd" height=20 width=20/>Sum</div>
+            </center>
+        </div>
+        <div class="extrafeature">
+            <center>
+                <div id="token" style="left: 0px;" data-dsize=0 data-renderfunction="drawToken()">
+		    <img class="dieimg" height=60 width=60 visible=false/>
+                    <input id="numberontoken" class="dnumdie" type="text" size=2 maxlength==2; value=""/>
+                </div>
+                <input id="tokenbutton" type="button" onclick="addTokenToPool()" value="Add token to pool"/>
+            </center>
+        </div>
+    </div>
+</div>
+	
+<div id="settings" class="tabbeddiv">	
+    <div id="otherextras">
+        <div>
+            <input id="mirrorlocalvideo" type="checkbox" onchange="changeMirror()"/>Mirror local video
+        </div>
+        <div>
+            <input id="lowerthirdactive" type="checkbox" value="on" onchange="changeLowerThird()"/>Display lower third<br>
+	    <input id="lowerthirdmaincolor" class="colorblock" type="color" value="#FFFFFF" onchange="changeLowerThird()"/>
+            Title: <input id="lowerthirdmain" type="text" size=27; value=""/><br>
+	    <input id="lowerthirdsubcolor" class="colorblock" type="color" value="#105080" onchange="changeLowerThird()"/>
+            Subtitle: <input id="lowerthirdsub" type="text" size=24; value=""/>
+        </div>
+    </div>
+</div>
+    
+<div id="help" class="tabbeddiv">
+<center><h3>Dice in the Vineyard</h3>An extension to help facilitate playing the
+RPG <b>Dogs in the Vineyard</b> via Google Hangouts.</center>
+<br>
+<p class="helptext">In the <b>"Dice"</b> tab, use the up/down arrows to select how many of each type
+of die you want to roll,
+and then press the "Roll dice into pool" button to roll them. They'll appear in the side pane where
+you'll be able to manipulate them, as well as overlaid on top of your video feed so the other people
+you're playing with can see what dice are in your pool. You can roll more dice into the pool without
+interfering with the dice that are already there. The "sort dice" button rearranges the dice that
+are currently in the pool based on the number showing on the die, from high to low.</p>
+<p class="helptext">When you click on a rolled die in your side pane die pool they'll cycle through
+three states: normal, circled, and X-ed out. (Trying to click on the dice in your video feed won't
+work: Google Hangouts doesn't tell this tool if you're clicking on your video feed, just in this
+control panel). You can use the circled state to indicate to everyone which dice you're using for a
+particular Raise or See. To help with this, there's a visual idicator that shows the sum of all the
+dice you have circled (it's only visible when you have dice circled, though) -- this makes it easier
+for others to see at a glance what Raise they'll have to see, or for you to see if you're putting
+forward enough dice in your See to match an opponent's Raise. If you'd rather not have the sum
+displayed, use the checkbox to shut this feature off. You can use the X-ed out state for dice that
+are used up, such as after a Raise/See is complete.</p>
+<p class="helptext">The "Remove all dice" and "Remove X dice" buttons are the way to get your dice out
+of your dice pool. The "Remove all dice" button clears every die, the "Remove X dice" button only removes
+those that are currently in the X-ed out state, it leaves the others in the pool.</p>
+<p class="helptext">The "add token to pool" button lets you add a token with a user-specified number on
+it into your die pool. This can be useful for when you need to seed your pool with a particular number,
+such as when you Give in a conflict which lets you start a followup conflict with your best remaining die.
+Instead of leaving that one die in your pool you can just note the number down, clear your pool, and then
+seed your pool with a token with that number if and when a followup conflict starts.</p>
+<br>
+<p class="helptext">In the <b>"Settings"</b> tab you can control whether or not your local video is
+displayed as "mirrored" to you. Most people find it weird to see images of themselves that aren't
+left/right flipped the way we see ourselves when we look in physical mirrors, so by default Google
+Hangouts flips your video when it shows your own video feed to you (although everybody else just sees
+what the camera sees without the mirroring effect). However, since this extension is putting numbers on
+the screen those would get mirrored, too. By default this extension shuts off the local video mirroring
+so you won't see backwards numbers on the screen, but you can turn it back on with the checkbox. (The
+mirroring effect only applies to your own video, everyone else will see normal non-backwards numbers
+even if you turn the mirroring feature on).</p>
+<p class="helptext">It's sometimes useful to display things like your character's name on your screen.
+You can use the "lower third" options for that sort of thing. Enter the information you'd like displayed,
+adjust the background colors if you want, and use the checkbox to turn the feature on.</p>
+<br>
+<p class="helptext">The <b>"Help"</b> tab is what you're reading right now.</p>
+</div>
+
+	
+</div>		
+
+</body>
+]]>
+</Content>
+</Module>
+

@@ -1,0 +1,223 @@
+.tabcontainer {
+    margin-top: 5px;
+}
+.tabselector {
+    display: inline;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 1px; /* covers up line between tab and content below */
+    background: white;
+    margin-left: 5px;
+    cursor: default;
+}
+.tabdisplay {
+    border: 1px solid black;
+}
+
+.tabbeddiv {
+    display: none;
+    height: 100%;
+    width: 100%;
+}
+#gui {
+    width: 300px;
+    height: 800px;
+}
+
+#help {
+    overflow-y: scroll;
+    text-indent: 
+}
+.helptext {
+    margin: 5px;
+    margin-bottom: 15px;
+}
+
+#diceinputcontainer {
+    position: relative;
+    /*height: 897px;*/
+    /*width: 310px;
+    border: 1px solid orange;*/
+    height: 60px;
+    font-size: 0px;
+}
+.dieinput {
+    /*position: absolute;*/
+    display: inline-block;
+    padding: 0px;
+    position: relative;
+    /*top: 0px;*/
+    height: 60px;
+    line-height: 30px;
+    width: 72px;
+    /*border: 1px solid red;*/
+    font-size: 18px;
+    font-family: sans-serif;
+}
+    .dieimg {
+        position: absolute;
+        left: 6px;
+        top: 0px;
+        height: 60px;
+        width: 60px;
+        text-align: center;
+    }
+    .incrdecr {
+        position: absolute;
+        top: 15%;
+        left: 0%;
+        height: 70%;
+        width: 25%;
+    }
+        .incrbutton {
+            position: absolute;
+            top: 2%;
+            left: 0%;
+            height: 45%;
+            width: 100%;
+            font-size: 10px;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+        .decrbutton {
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            height: 45%;
+            width: 100%;
+            font-size: 10px;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+    .dnumdie {
+        position: absolute;
+        left: 25%;
+        top: 25%;
+        height: 50%;
+        width: 19%;
+        font-size: 100%;
+        text-align: right;
+    }
+    .diesizeindicator {
+        position: absolute;
+        left: 43%;
+        top: 25%;
+        height: 50%;
+        width: 50%;
+        font-size: 100%;
+    }
+    .diebkgrnd {
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        height: 80%;
+        width: 80%;
+    }
+    
+
+.rollcontrols {
+    position: relative;
+    height: 30px;
+    width: 288px;
+    text-align: center;
+    /*border: 1px solid red;*/
+}
+    .rollbutton {
+        position: relative;
+        top: 4px;
+    }
+
+#dicepool {
+    position: relative;
+    width: 288px;
+    height: 500px;
+    /*height: 100px;*/
+    border: 1px solid black;
+    background-color: LemonChiffon;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+    .individualdie {
+        position: relative;
+        width: 60px;
+        height: 60px;
+    }
+
+#poolextras {
+    width: 288px;
+    text-align: center;
+}
+.extrafeature {
+    display: inline-block;
+    position: relative;
+    margin: 5px;
+    /*border: 1px solid black;*/
+}
+#token {
+    position: relative;
+    top: 0px;
+    height: 60px;
+    line-height: 30px;
+    width: 72px;
+    /*border: 1px solid black;*/
+    font-size: 18px;
+    font-family: sans-serif;
+}
+#numberontoken {
+        position: absolute;
+        left: 32%;
+        top: 25%;
+        height: 50%;
+        width: 36%;
+        font-size: 100%;
+        text-align: center;
+}
+#tokenbutton {
+    position: relative;
+    /*left: 72px;*/
+}
+#dicesumlabel {
+    position: relative;
+    width: 32px;
+    display:inline-block;
+    line-height: 20px;
+    font-family: sans-serif;
+}
+#dicesumbkgrnd {
+    position: absolute;
+    left: 6px;
+    top: 0px;
+    height: 20px;
+    width: 20px;
+}
+#circlesum {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+}
+
+#lowerthirdmaindisplay {
+    position: absolute;
+    left: 50%;
+    width: 200px;
+    height: 100px;
+    border: 1px solid salmon;
+    
+}
+#lowerthirdsubdisplay {
+    position: absolute;
+    left: 60%;
+    width: 200px;
+    height: 100px;
+    border: 1px solid salmon;
+}
+.colorblock {
+    position: relative;
+    top: 0px;
+    width: 20px;
+    height: 20px;
+}
