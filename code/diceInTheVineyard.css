@@ -1,30 +1,90 @@
-.tabcontainer {
-    margin-top: 5px;
-}
-.tabselector {
-    display: inline;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-bottom: 1px; /* covers up line between tab and content below */
-    background: white;
-    margin-left: 5px;
-    cursor: default;
-}
-.tabdisplay {
-    border: 1px solid black;
+body {
+    height: 100%;
 }
 
-.tabbeddiv {
-    display: none;
-    height: 100%;
-    width: 100%;
+/* tabbed GUI functionality */
+/* the main container which houses all the tabs/content */
+.tabs {
+    position: absolute;
+    min-height: 500px;
+    height: 95%;
+    top: 0%;
+    bottom: 100%;
+    clear: both;
+    margin: 5px 0;
 }
+
+/* the container for the tab and its associated content */
+.tab {
+    display: inline-block;
+    height: 40px;
+}
+
+/* the clickable tab */
+.tab label {
+    display: inline-block;
+    background: #eee;
+    padding: 1px;
+    border: 1px solid black;
+    position: relative;
+    height: 20px;
+    z-index: 1;
+}
+
+/* radio buttons are used for virtual functionality not visual display, so hide them */
+.tab [type=radio] {
+    display: none;
+}
+
+/* the content of the tab */
+.content {
+    position: absolute;
+    top: 24px;
+    left: 0;
+    background: white;
+    right: 0;
+    bottom: 0;
+    padding: 1px;
+    border: 1px solid black;
+
+    /* let the tab controls above overlap by a pixel, so it looks like they're connected */
+    margin-top: -1px;
+    display: none;
+
+}
+
+/* the label following a checked radio button, i.e. the active tab */
+[type=radio]:checked ~ label {
+    background: white;
+    border-bottom: none;
+    padding-bottom: 2px; /* compensate for the now-missing border */
+
+    /*z-index: 2;*/
+}
+
+/* the content following a checked radio button and a label, i.e. the active tab content */
+[type=radio]:checked ~ label ~ .content {
+    /*z-index: 1;*/
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* actual app layout */
 #gui {
     width: 300px;
-    height: 800px;
+    /*height: 100%;*/
+    /*height: 90vh;*/
 }
 
 #help {
@@ -36,13 +96,15 @@
     margin-bottom: 15px;
 }
 
+#dice {
+    display: flex;
+    flex-direction: column;
+}
 #diceinputcontainer {
-    position: relative;
-    /*height: 897px;*/
-    /*width: 310px;
-    border: 1px solid orange;*/
     height: 60px;
     font-size: 0px;
+    flex: 0 0 auto;
+
 }
 .dieinput {
     /*position: absolute;*/
@@ -97,13 +159,13 @@
         left: 25%;
         top: 25%;
         height: 50%;
-        width: 19%;
+        width: 33%; /*19%;*/
         font-size: 100%;
         text-align: right;
     }
     .diesizeindicator {
         position: absolute;
-        left: 43%;
+        left: 57%;
         top: 25%;
         height: 50%;
         width: 50%;
@@ -119,11 +181,12 @@
     
 
 .rollcontrols {
-    position: relative;
+    /*position: relative;*/
     height: 30px;
     width: 288px;
     text-align: center;
     /*border: 1px solid red;*/
+    flex: 0 0 auto;
 }
     .rollbutton {
         position: relative;
@@ -131,14 +194,15 @@
     }
 
 #dicepool {
-    position: relative;
+    /*position: relative;*/
     width: 288px;
-    height: 500px;
+    height: 200px;
     /*height: 100px;*/
     border: 1px solid black;
     background-color: LemonChiffon;
     overflow-y: scroll;
     overflow-x: hidden;
+    flex: 1 1 auto;
 }
     .individualdie {
         position: relative;
@@ -149,6 +213,7 @@
 #poolextras {
     width: 288px;
     text-align: center;
+    flex: 0 0 auto;
 }
 .extrafeature {
     display: inline-block;
@@ -200,24 +265,19 @@
     border: 1px solid black;
 }
 
-#lowerthirdmaindisplay {
-    position: absolute;
-    left: 50%;
-    width: 200px;
-    height: 100px;
-    border: 1px solid salmon;
-    
-}
-#lowerthirdsubdisplay {
-    position: absolute;
-    left: 60%;
-    width: 200px;
-    height: 100px;
-    border: 1px solid salmon;
-}
 .colorblock {
     position: relative;
     top: 0px;
     width: 20px;
     height: 20px;
 }
+
+
+.settingsblock {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.settingsblock [type=radio] {
+    display: inline;
+}
+

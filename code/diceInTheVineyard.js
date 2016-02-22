@@ -71,45 +71,43 @@ function initDieImages () {
     HangoutDieVertImageScale = HangoutDieImageScale * gapi.hangout.layout.getVideoCanvas().getAspectRatio();
 
     gapi.hangout.av.setLocalParticipantVideoMirrored(mirrorlocalvideo.checked);
-    
+
+    changeResizePreventer();    
 }
 
-// GUI helper functions to achieve "tab" effect.
-function clickOnTab(event) {
-    event = event || window.event;
-    t = event.target;
-    selectTab(t);
-}
-
-function selectTab(t) {
+var ResizePreventerResource = undefined;
+var ResizePreventerOverlay = undefined;
+var ResizePreventerSrc = undefined;
+function changeResizePreventer() {
+    if (ResizePreventerSrc == undefined) {
+        clearCanvas();
+        ResizePreventerSrc = renderingcanvas.toDataURL();
+    }
     
-    // hide the controlled divs of my peers.
-    s = t.nextElementSibling;
-    while (s != undefined) {
-        if (s.dataset.controlleddiv != undefined) {
-            document.getElementById(s.dataset.controlleddiv).style.display = "none";
-            s.style.paddingBottom = "0px";
+    if (preventvideoresizing.checked) {
+        if (ResizePreventerResource == undefined) {
+            ResizePreventerResource = gapi.hangout.av.effects.createImageResource(ResizePreventerSrc);
+            ResizePreventerOverlay = ResizePreventerResource.createOverlay({scale : {magnitude: HangoutDicePerRow * HangoutDieImageScale,
+                                                                  reference: gapi.hangout.av.effects.ScaleReference.WIDTH}});
         }
-        s = s.nextElementSibling;
-    }
-    s = t.previousElementSibling;
-    while (s != undefined) {
-        if (s.dataset.controlleddiv != undefined) {
-            document.getElementById(s.dataset.controlleddiv).style.display = "none";
-            s.style.paddingBottom = "0px";
+        ResizePreventerOverlay.setPosition(0, 0);
+        ResizePreventerOverlay.setVisible(true);
+    } else {
+        if (ResizePreventerResource != undefined) {
+            ResizePreventerOverlay.setVisible(false);
+            ResizePreventerResource.dispose();
+            ResizePreventerOverlay = undefined;
+            ResizePreventerResource = undefined;
         }
-        s = s.previousElementSibling;
     }
-
-    document.getElementById(t.dataset.controlleddiv).style.display = "block";
-    t.style.paddingBottom = "2px";
+    
 }
 
 
 // incrementor/decrementor on the input field for how many of each dice to roll.
 function dRequestChange(field, amount) {
     var f = document.getElementById(field)
-    f.value =  Math.min(9, Math.max(parseInt(f.value) + amount, 0));
+    f.value =  Math.min(99, Math.max(parseInt(f.value) + amount, 0));
 }
 
 // user left-clicked on a die, update its state
@@ -142,19 +140,35 @@ function cycleState(obj) {
     updateCircleSum();
 }
 
+function updateCircleHighlightDisplay() {
+    if (displaysum.checked) {
+        dicesumlabel.childNodes[1].textContent = "Sum";
+    } else if (displaycount.checked) {
+        dicesumlabel.childNodes[1].textContent = "Count";
+    } else {
+        dicesumlabel.childNodes[1].textContent = "?????";
+    }
+
+    updateCircleSum();
+}
+
 // Adds up the result of all dice in the "circle" state and displays that sum
 // (Useful for indicating a "Raise" or "See" in a DITV conflict)
 function updateCircleSum() {
     var sum = 0;
     for (var i=0; i<dicepool.childNodes.length; i++) {
         if (dicesumactive.checked && dicepool.childNodes[i].dieState == 1) {
-            sum += dicepool.childNodes[i].dieResult;
+            if (displaysum.checked) {
+                sum += dicepool.childNodes[i].dieResult;                
+            } else if (displaycount.checked) {
+                sum += 1; // 
+            }
         }
     }
     
     if (sum != circlesum.currentSum) {
+        circlesumimg.src = getSumImage(sum);
         if (sum > 0) {
-            circlesumimg.src = getSumImage(sum);
             circlesumimg.visible = true;
             
             if (circlesum.hangoutResource != undefined) {
@@ -478,10 +492,15 @@ function rollDiceIntoPool() {
             
             for (r=0; r<numToRoll; r++) {
                 var dieResult = Math.floor(dieSize*Math.random())+1;
-                addDie(dieSize, dieResult);
+                if ((autohighlight.checked) && (dieResult >= parseInt(autohighlightthreshold.value))) {
+                    addDie(dieSize, dieResult, 1); 
+                } else {
+                    addDie(dieSize, dieResult);
+                }
             }
         }
     }
+    updateCircleSum();
 }
 
 // remove all dice from the pool
@@ -548,7 +567,11 @@ function removeXsFromPool() {
 function addTokenToPool() {
     var v = parseInt(numberontoken.value);
     if (v > 0) {
-        addDie(0, v, 0);
+        if ((autohighlight.checked) && (v >= parseInt(autohighlightthreshold.value))) {
+            addDie(0, v, 1);
+        } else {
+            addDie(0, v, 0);
+        }
     }
     numberontoken.value = "";
 }
@@ -556,10 +579,6 @@ function addTokenToPool() {
 // Can be helpful for stuff like showing your character's name on screen.
 function changeLowerThird() {
     if (lowerthirdactive.checked) {
-        //lowerthirdmaindisplay.style.backgroundColor = "blue";
-        //lowerthirdsubdisplay.style.backgroundColor = "teal";
-        //lowerthirdmaindisplay.innerHTML = lowerthirdmain.value;
-        //lowerthirdsubdisplay.innerHTML = lowerthirdsub.value;
 
         if (LowerThirdResource != undefined) {
             LowerThirdResource.dispose();
