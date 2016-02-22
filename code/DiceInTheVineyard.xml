@@ -138,7 +138,7 @@ gadgets.util.registerOnLoadHandler(init);
 	<div class="settingsblock">
 	    (Features for some non-DITV games)<br>
 	    <input id="autohighlight" type="checkbox"/>Auto-highlight &gt;=
-	    <input id="autohighlightthreshold" type="text" size=2 value="3"/><br>
+	    <input id="autohighlightthreshold" type="text" size=2 value="4"/><br>
 	    <input id="displaysum" type="radio" name="highlightdisplay"  onchange="updateCircleHighlightDisplay()" checked>Display <b>sum</b> of highlighted dice<br>
 	    <input id="displaycount" type="radio" name="highlightdisplay"  onchange="updateCircleHighlightDisplay()">Display <b>count</b> of highlighted dice
 	</div>
